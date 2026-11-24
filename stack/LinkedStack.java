@@ -6,18 +6,28 @@ public class LinkedStack<E> implements Stack<E> {
     public LinkedStack(){
         top = null;
     }
-    @Override 
+    @Override
     public E pop(){
-        if(top == null){ return null;}
-        E element = top.element();
-        LinkNode temp = top;
-        top = top.next();
-        temp.setSetNext(null);
-        return element;
+        if(isEmpty()){
+            throw new IllegalStateException("Stack is empty");
+        }
 
+        E element = top.element();
+        top = top.next();
+        return element;
     }
-    public void push(E elem){}
-    public void clear(){}
+
+    @Override
+    public void push(E elem){
+        top = new LinkNode<E>(elem, top);
+    }
+
+    @Override
+    public void clear(){
+        top = null;
+    }
+
+    @Override
     public boolean isEmpty(){
         return top == null;
     }

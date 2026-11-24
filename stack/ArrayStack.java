@@ -21,8 +21,11 @@ public class ArrayStack<E> implements Stack<E>{
     @Override 
     public E pop(){ // poping an elemt 
         if(isEmpty()){throw new IllegalStateException("Stack is empty");}
-        else{return array[--top];}
         
+        E element = array[--top];
+        array[top] = null;
+
+        return element;
         
     }
     @Override

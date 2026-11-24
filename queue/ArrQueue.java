@@ -5,6 +5,7 @@ public class ArrQueue<E> implements queue<E>{
     private int rear;
     private int front;
     private int maxSize;
+    private int count;
     private E[] arrList;
 
     ArrQueue(){
@@ -38,8 +39,9 @@ public class ArrQueue<E> implements queue<E>{
         }
         rear = (rear+1) % maxSize;
         arrList[rear] = elem;
+        count++;
     } 
     public int length(){// return the lenght of the que
-        return ((rear+maxSize) - front + 1) % maxSize;
+        return count;
     } 
 }
